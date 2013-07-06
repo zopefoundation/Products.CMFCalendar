@@ -15,6 +15,7 @@
 
 import time
 
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import adapts
 from zope.component import getUtility
 from zope.formlib import form
@@ -30,14 +31,15 @@ from zope.schema import URI
 from zope.schema.interfaces import IVocabularyFactory
 
 from Products.CMFCore.interfaces import IMetadataTool
-from Products.CMFDefault.browser.utils import decode, ViewBase
+from Products.CMFDefault.browser.utils import decode
+from Products.CMFDefault.browser.utils import memoize
+from Products.CMFDefault.browser.utils import ViewBase
 from Products.CMFDefault.formlib.form import ContentEditFormBase
 from Products.CMFDefault.formlib.form import DisplayFormBase
 from Products.CMFDefault.formlib.schema import EmailLine
 from Products.CMFDefault.formlib.schema import ProxyFieldProperty
 from Products.CMFDefault.formlib.schema import SchemaAdapterBase
 from Products.CMFDefault.formlib.vocabulary import SimpleVocabulary
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.CMFCalendar.interfaces import IMutableEvent
 from Products.CMFCalendar.utils import Message as _
@@ -141,6 +143,10 @@ class EventSchemaAdapter(SchemaAdapterBase):
 
 
 class EventViewMixin(object):
+
+    @memoize
+    def getContent(self):
+        return EventSchemaAdapter(self.context)
 
     def setUpWidgets(self, ignore_request=False):
         super(EventViewMixin,
