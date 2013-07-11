@@ -4,6 +4,8 @@ Products.CMFCalendar Changelog
 2.3.0 (unreleased)
 ------------------
 
+- browser views: Synced view names with the names used in type Actions.
+
 - profiles: Modified Method Aliases used in type Actions.
 
 

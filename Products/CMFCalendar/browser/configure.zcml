@@ -12,7 +12,7 @@
   <browser:page
       for="Products.CMFCalendar.interfaces.IEvent"
       layer="Products.CMFDefault.interfaces.ICMFDefaultSkin"
-      name="view.html"
+      name="view"
       class=".event.EventView"
       permission="zope2.View"
       />
@@ -20,7 +20,7 @@
   <browser:page
       for="Products.CMFCalendar.interfaces.IMutableEvent"
       layer="Products.CMFDefault.interfaces.ICMFDefaultSkin"
-      name="edit.html"
+      name="edit"
       class=".event.EventEditView"
       permission="cmf.ModifyPortalContent"
       />
@@ -28,7 +28,7 @@
   <browser:page
       for="*"
       layer="Products.CMFDefault.interfaces.ICMFDefaultSkin"
-      name="calendar_day.html"
+      name="calendar_day"
       class=".calendartool.CalendarView"
       template="templates/calendar_day.pt"
       permission="zope2.View"

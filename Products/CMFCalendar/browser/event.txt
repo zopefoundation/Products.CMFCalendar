@@ -20,7 +20,7 @@ Create the browser object we'll be using.
 
 Use the edit form without input.
 
-    >>> browser.open('http://localhost/site/myEvent/@@edit.html')
+    >>> browser.open('http://localhost/site/myEvent/@@edit')
     >>> '[[cmf_default][Edit [[cmf_calendar][Event]]]]' in browser.contents
     True
     >>> browser.getControl('[[cmf_default][Change]]').click()
@@ -29,7 +29,7 @@ Use the edit form without input.
 
 Use the edit form with invalid input.
 
-    >>> browser.open('http://localhost/site/myEvent/@@edit.html')
+    >>> browser.open('http://localhost/site/myEvent/@@edit')
     >>> browser.getControl('[[cmf_calendar][From]]').value = 'a'
     >>> browser.getControl('[[cmf_default][Change]]').click()
     >>> '[[zope][There were errors]]' in browser.contents
@@ -46,7 +46,7 @@ Use the edit form with valid input.
 
 Look at the result:
 
-    >>> browser.open('http://localhost/site/myEvent/@@view.html')
+    >>> browser.open('http://localhost/site/myEvent/@@view')
     >>> '2006 11 6  12:00:00 ' in browser.contents
     True
 
