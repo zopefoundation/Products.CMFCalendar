@@ -205,8 +205,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
     def test_singleEventCalendarRendering(self):
         site = self.app.site
         caltool = self.app.site.portal_calendar
-        site.Members.invokeFactory(type_name="Event", id='Event1')
-        event = self.app.restrictedTraverse('/site/Members/Event1')
+        site.invokeFactory(type_name="Event", id='Event1')
+        event = self.app.restrictedTraverse('/site/Event1')
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -277,8 +277,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
     def test_eventCalendarRenderingIssue411(self):
         #  http://www.zope.org/Collectors/CMF/411
         site = self.app.site
-        site.Members.invokeFactory(type_name="Event", id='Event1')
-        event = self.app.restrictedTraverse('/site/Members/Event1')
+        site.invokeFactory(type_name="Event", id='Event1')
+        event = self.app.restrictedTraverse('/site/Event1')
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -294,8 +294,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
                    stopAMPM="AM")
         site.portal_workflow.doActionFor(event, 'publish', comment='testing')
 
-        site.Members.invokeFactory(type_name="Event", id='Event2')
-        event = self.app.restrictedTraverse('/site/Members/Event2')
+        site.invokeFactory(type_name="Event", id='Event2')
+        event = self.app.restrictedTraverse('/site/Event2')
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -317,8 +317,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
     def test_spanningEventCalendarRendering(self):
         site = self.app.site
         caltool = self.app.site.portal_calendar
-        site.Members.invokeFactory(type_name="Event", id='Event1')
-        event = self.app.restrictedTraverse('/site/Members/Event1')
+        site.invokeFactory(type_name="Event", id='Event1')
+        event = self.app.restrictedTraverse('/site/Event1')
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -474,8 +474,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
         caltool = self.app.site.portal_calendar
         wftool = self.app.site.portal_workflow
 
-        site.Members.invokeFactory(type_name="Event", id='Event1')
-        event = site.Members.Event1
+        site.invokeFactory(type_name="Event", id='Event1')
+        event = site.Event1
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -493,8 +493,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
         events = caltool.getEventsForThisDay(thisDay=DateTime('2002/5/1'))
         self.assertEqual(len(events), 1)
 
-        site.Members.invokeFactory(type_name="Event", id='Event2')
-        event = site.Members.Event2
+        site.invokeFactory(type_name="Event", id='Event2')
+        event = site.Event2
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -512,8 +512,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
         events = caltool.getEventsForThisDay(thisDay=DateTime('2002/5/1'))
         self.assertEqual(len(events), 2)
 
-        site.Members.invokeFactory(type_name="Event", id='Event3')
-        event = site.Members.Event3
+        site.invokeFactory(type_name="Event", id='Event3')
+        event = site.Event3
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -531,8 +531,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
         events = caltool.getEventsForThisDay(thisDay=DateTime('2002/5/1'))
         self.assertEqual(len(events), 3)
 
-        site.Members.invokeFactory(type_name="Event", id='Event4')
-        event = site.Members.Event4
+        site.invokeFactory(type_name="Event", id='Event4')
+        event = site.Event4
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
@@ -550,8 +550,8 @@ class CalendarRequestTests(ZopeTestCase.FunctionalTestCase):
         events = caltool.getEventsForThisDay(thisDay=DateTime('2002/5/1'))
         self.assertEqual(len(events), 4)
 
-        site.Members.invokeFactory(type_name="Event", id='Event5')
-        event = site.Members.Event5
+        site.invokeFactory(type_name="Event", id='Event5')
+        event = site.Event5
         event.edit(title='title',
                    description='description',
                    eventType=('eventType',),
