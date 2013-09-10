@@ -21,6 +21,8 @@ class IEvent(Interface):
     """ IEvent models an event.
     """
 
+    __module__ = 'Products.CMFCalendar.interfaces'
+
     def getEndStrings():
         """ Returns a mapping with string representations for the end time
 
@@ -58,6 +60,9 @@ class IMutableEvent(IEvent):
 
     """ Updatable form of IEvent.
     """
+
+    __module__ = 'Products.CMFCalendar.interfaces'
+
     def edit( title=None
             , description=None
             , eventType=None

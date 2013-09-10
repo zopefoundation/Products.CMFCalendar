@@ -20,3 +20,5 @@ class ICalendarTool(Interface):
 
     """ Declare product-specific APIs for the CMFCalendar tools.
     """
+
+    __module__ = 'Products.CMFCalendar.interfaces'
